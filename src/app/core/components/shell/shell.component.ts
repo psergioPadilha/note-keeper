@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import { popResultSelector } from 'rxjs/internal/util/args';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-shell',
@@ -23,6 +24,7 @@ import { popResultSelector } from 'rxjs/internal/util/args';
     MatIconModule,
     AsyncPipe,
     NgIf,
+    RouterOutlet
   ]
 })
 export class ShellComponent {

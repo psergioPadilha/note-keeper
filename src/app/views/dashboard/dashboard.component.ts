@@ -5,11 +5,12 @@ import { MatIconModule } from '@angular/material/icon';
 import { ItemDashboard } from './models/item-dashboard.model';
 import { RouterLink } from '@angular/router';
 import { NgForOf } from '@angular/common';
+import { ListagemCategoriasComponent } from "../categorias/listar/listagem-categorias.component";
 
 @Component({
   selector: 'app-deshboard',
   standalone: true,
-  imports: [RouterLink, NgForOf, MatCardModule, MatButtonModule, MatIconModule],
+  imports: [RouterLink, NgForOf, MatCardModule, MatButtonModule, MatIconModule, ListagemCategoriasComponent],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss'
 })

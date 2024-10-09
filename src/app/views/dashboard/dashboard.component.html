@@ -13,7 +13,12 @@
         <mat-card-content class="mt-3">{{ item.descricao }}</mat-card-content>
 
         <mat-card-footer class="d-flex justify-content-end p-2 mt-auto">
-          <a mat-icon-button class="botao-icone" title="Ir para {{ item.titulo }}" [routerLink]="item.rota">
+          <a
+            mat-icon-button
+            class="botao-icone"
+            title="Ir para {{ item.titulo }}"
+            [routerLink]="item.rota"
+          >
             <mat-icon>arrow_right</mat-icon>
           </a>
         </mat-card-footer>

@@ -20,3 +20,5 @@ export interface CadastroCategoria {
   id: number;
   titulo: string;
   }
+
+  export interface CategoriaExcluida {}

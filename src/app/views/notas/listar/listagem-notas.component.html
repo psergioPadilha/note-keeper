@@ -18,11 +18,17 @@
   <hr />
 
   <div *ngIf="notas$ | async as itens" class="row g-3 mt-2">
-    <div *ngFor="let item of itens" class="col-lg-4 col-xxl-3">
+    <div *ngFor="let item of itens" class="col-lg-4">
       <mat-card class="mat-mdc-elevation-specific mat-elevation-z5 h-100">
-        <mat-card-header>
+        <mat-card-header class="d-flex justify-content-between">
           <mat-card-title class="titulo-card">{{ item.titulo }}</mat-card-title>
+
+          <span>{{ item.categoria.titulo }}</span>
         </mat-card-header>
+
+        <mat-card-content class="mt-4">
+          <p>{{ item.conteudo }}</p>
+        </mat-card-content>
 
         <mat-card-footer class="d-flex justify-content-end gap-2 p-2 mt-auto">
           <a

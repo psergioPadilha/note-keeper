@@ -20,6 +20,7 @@ export class ListagemCategoriasComponent implements OnInit {
   categorias$?: Observable<ListagemCategoria[]>;
 
   constructor(private categoriaService: CategoriaService) { }
+  
   ngOnInit(): void {
     this.categorias$ = this.categoriaService.selecionarTodos();
   }

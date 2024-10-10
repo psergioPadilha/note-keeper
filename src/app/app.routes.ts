@@ -4,6 +4,7 @@ import { ListagemCategoriasComponent } from './views/categorias/listar/listagem-
 import { CadastroCategoriaComponent } from './views/categorias/cadastrar/cadastro-categoria.component';
 import { EdicaoCategoriaComponent } from './views/categorias/editar/edicao-categorias.component';
 import { ExclusaoCategoriasComponent } from './views/categorias/excluir/exclusao-categorias.component';
+import { notasRoutes } from './views/notas/notas.routes';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -19,4 +20,6 @@ export const routes: Routes = [
       { path: 'excluir/:id', component: ExclusaoCategoriasComponent },
     ],
   },
+
+  { path: 'notas', children: notasRoutes },
 ];

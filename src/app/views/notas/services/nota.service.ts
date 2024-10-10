@@ -7,6 +7,7 @@ import { CadastroNota, DetalhesNota, EdicaoNota, ListagemNota, NotaCriada, NotaE
 @Injectable({
   providedIn: 'root'
 })
+
 export class NotaService {
   private readonly url = `${environment.API_URL}/notas`;
 

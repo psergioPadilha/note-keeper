@@ -5,14 +5,19 @@
 
   <div class="row g-3 mt-2">
 
-    <form [formGroup]="categoriaForm" (submit)="editar()" class="col-lg-8 col-xl-5">
+    <form [formGroup]="categoriaForm" (submit)="editar()" class="col-lg-8 col-xl-8">
       <mat-form-field class="w-100" appearance="fill">
         <mat-label>Título da Categoria</mat-label>
         <input formControlName="titulo" matInput placeholder="Ex: Lazer">
         <mat-icon matSuffix>subtitles</mat-icon>
+
+        <!-- Validação do campo título, se estiver em branco ou conter menos de três caracteres -->
+        <mat-error *ngIf="(titulo?.invalid) && (titulo?.errors)!['required']">O campo "TÍTULO" é obrigatório!</mat-error>
+        <mat-error *ngIf="(titulo?.invalid) && (titulo?.errors)!['minlength']">O campo "TÍTULO" precisa conter ao menos três caracteres!</mat-error>
+
       </mat-form-field>
 
-      <div class="row justify-content-end justify-content-md-end g-2 gap-1">
+      <div class="row justify-content-end justify-content-md-end g-2 gap-2 mt-4">
         <button type="submit" mat-flat-button class="col-sm-3 col-md-4">
           <mat-icon matIconPrefix>check</mat-icon>
           Confirmar

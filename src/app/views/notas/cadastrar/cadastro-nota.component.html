@@ -1,0 +1,83 @@
+<main class="container-fluid my-4">
+  <h1 class="fs-2">Cadastro de Nota</h1>
+
+  <hr />
+
+  <div *ngIf="categorias$ | async as categorias" class="row g-2 mt-2">
+
+    <form [formGroup]="notaForm" (submit)="cadastrar()" class="col-lg-8 col-xl-8">
+      <mat-form-field class="w-100" appearance="fill">
+        <mat-label>Título</mat-label>
+        <input formControlName="titulo" matInput placeholder="Ex: Lavar o carro">
+        <mat-icon matSuffix>title</mat-icon>
+
+        <!-- Validação do campo título, se estiver em branco ou conter menos de três caracteres -->
+        <mat-error *ngIf="(titulo?.invalid) && (titulo?.errors)!['required']">O campo "TÍTULO" é obrigatório!</mat-error>
+        <mat-error *ngIf="(titulo?.invalid) && (titulo?.errors)!['minlength']">O campo "TÍTULO" precisa conter ao menos três caracteres!</mat-error>
+
+      </mat-form-field>
+
+      <mat-form-field class="w-100 mt-3" appearance="fill">
+        <mat-label>Conteúdo</mat-label>
+        <textarea formControlName="conteudo" matInput placeholder="Ex: Descrição"></textarea>
+        <mat-icon matSuffix>subtitles</mat-icon>
+
+        <!-- Validação do campo conteúdo, se estiver em branco ou conter menos de três caracteres -->
+        <mat-error *ngIf="(conteudo?.invalid) && (conteudo?.errors)!['required']">O campo "CONTEÚDO" é obrigatório!</mat-error>
+        <mat-error *ngIf="(conteudo?.invalid) && (conteudo?.errors)!['minlength']">O campo "CONTEÚDO" precisa conter ao menos três caracteres!</mat-error>
+
+      </mat-form-field>
+
+      <mat-form-field *ngIf="categorias$ | async as categorias" class="w-100 mt-3" appearance="fill">
+        <mat-label>Categoria</mat-label>
+
+        <mat-select formControlName="categoriaId">
+          <mat-option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.titulo }}</mat-option>
+        </mat-select>
+        <mat-icon matSuffix>bookmark</mat-icon>
+
+        <!-- Validação do campo categorias -->
+        <!-- <mat-error *ngIf="categoriaId?.get('selectControl')?.hasError('required')">O campo "CATEGORIA" é obrigatório!</mat-error> -->
+        <mat-error *ngIf="">O campo "CATEGORIA" é obrigatório!</mat-error>
+
+      </mat-form-field>
+
+      <div class="row justify-content-end g-3 mt-1">
+        <mat-card class="col-6 mat-mdc-elevation-specific mat-elevation-z5 h-100">
+          <mat-card-header class="d-flex justify-content-between">
+
+            <mat-card-title [ngSwitch]="campoNaoFoiTocado('titulo')" class="titulo-card">
+              <span *ngSwitchCase="true">Esta é sua nota</span>
+              <span *ngSwitchCase="false">{{ notaForm.get("titulo")?.value }}</span>
+            </mat-card-title>
+
+            <div [ngSwitch]="campoNaoFoiTocado('categoriaId')">
+              <span *ngSwitchCase="true">Categoria</span>
+              <span *ngSwitchCase="false">{{ mapearTituloDaCategoria(notaForm.get("categoriaId")?.value, categorias) }}</span>
+            </div>
+
+          </mat-card-header>
+
+          <mat-card-content [ngSwitch]="campoNaoFoiTocado('titulo')" class="mt-4">
+            <p *ngSwitchCase="true">Preencha os campos para ver como ficará!</p>
+            <p *ngSwitchCase="false">{{ notaForm.get("conteudo")?.value }}</p>
+          </mat-card-content>
+
+        </mat-card>
+      </div>
+
+      <div class="row justify-content-center justify-content-md-end g-2 gap-1 mt-1">
+        <button type="submit" mat-flat-button class="col-sm-3 col-md-4">
+          <mat-icon matIconPrefix>check</mat-icon>
+          Confirmar
+        </button>
+
+        <a mat-stroked-button type="button" class="col-sm-3 col-md-4" routerLink="/notas">
+          <mat-icon matIconPrefix>keyboard_return</mat-icon>
+          Voltar
+        </a>
+      </div>
+    </form>
+
+  </div>
+</main>

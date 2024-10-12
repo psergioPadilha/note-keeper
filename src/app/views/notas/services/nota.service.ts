@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../../../environments/environment.development';
+import { environment } from '../../../../environments/environment';
 import { CadastroNota, DetalhesNota, EdicaoNota, ListagemNota, NotaCriada, NotaEditada, NotaExcluida } from '../models/nota.models';
 
 @Injectable({
@@ -25,7 +25,7 @@ export class NotaService {
 
   selecionarPoId(id: number): Observable<DetalhesNota> {
     const urlCompleto = `${this.url}/${id}?_expand=categoria`;
-    
+
     return this.http.get<DetalhesNota>(urlCompleto);
   }
 

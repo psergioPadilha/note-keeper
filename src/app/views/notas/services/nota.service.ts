@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { environment } from '../../../../environments/environment';
 import { CadastroNota, DetalhesNota, EdicaoNota, ListagemNota, NotaCriada, NotaEditada, NotaExcluida } from '../models/nota.models';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'

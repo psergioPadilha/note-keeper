@@ -130,7 +130,7 @@
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
           "options": {
-            "baseHref": "https://github.com/psergioPadilha/note-keeper/",
+            "baseHref": "https://psergiopadilha.github.io/note-keeper/",
             "repo": "https://github.com/psergioPadilha/note-keeper.git"
           }
         }
